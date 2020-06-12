@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Word Count App</title>
+	<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		
+	<link rel = "icon" href =  "logo.png" type = "image/x-icon">
+	<style type="text/css">
+		body{
+			margin: 0px;
+			background-color: #37474F;
+		}
+		.head{
+			padding-top: 10px;
+			padding-bottom: 10px;
+			background-color: #263238;
+			height: 50px;
+			width: 100%;
+			border: none;
+			margin-bottom: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+		}
+		.heading{
+			margin: 0;
+			padding-top:5px;
+			color:#A8D1DD;
+			/*display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			*/font-weight: bolder;
+			position: relative;
+			float: left;
+			font-style: italic;
+			font-size: 20px;
+			font-family: sans-serif;
+			/*margin-bottom: 70px;*/
+
+
+		}
+		.inp{
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.numdiv{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border:1px solid #C0C0C0;
+			border-radius: 24px;
+			height:44px;
+			width:250px ;
+			display: flex;
+			background-color: #CFD8DC;
+		}
+		.num{
+			border: solid;
+			margin-left:20px;
+			/*margin:2.5px;*/
+			height: 35px;
+			width:200px;
+			border: none;
+			outline: none;
+			font-size:15px;
+			outline: none;
+			background-color: #CFD8DC;
+			color: #546E7A;
+		}
+
+		#myTextarea
+		{
+			border-radius: 20px;
+			border: 1PX solid;
+			border-color:#C0C0C0; 
+			margin-top: 20px;
+			height: 160px;
+			width:90%;
+			margin-bottom: 20px;
+			font-size: 20px;
+			outline: none;
+			background-color: #CFD8DC;
+			color: #546E7A;
+			font-weight: bold;
+			margin-bottom: 50px;
+			font-family: arial;
+		}
+
+		.typed{
+			border: 2px solid;
+			/*margin-top: 20px*/
+			border-color: green;
+			height: 90px;
+			width: 140px;
+			position: relative;
+			float:left;
+			left:5%;
+			background-color: #263238;
+		}
+		.left{
+			border: 2px solid;
+			/*margin-top: 20px*/
+			border-color: red;
+			height: 90px;
+			width: 140px;
+			position: relative;
+			float:right;
+			right:5%;
+			/*font-size: 6px;*/\
+			background-color: #263238;
+			
+		}
+		.txt
+		{
+			padding: 2px;
+			font-size: 15px;
+			color: green;
+		}
+			.numb
+		{
+			
+			margin-left:20px/*padding: 2px;*/
+			font-size: 40px;
+			color: green;
+			font-weight: bolder;
+			text-align: center;
+		}
+			.txt2
+		{
+			padding: 2px;
+			font-size: 15px;
+			color: red;
+		}
+			.numb2
+		{
+			
+			margin-left:20px/*padding: 2px;*/
+			font-size: 40px;
+			color: red;
+			font-weight: bolder;
+			text-align: center;
+		}
+
+#myTextarea:hover,.numdiv:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  border: 1px solid ##C0C0C0;
+
+}
+
+.typed:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  border: 1px solid green;
+  background-color: #90EE90;
+}
+
+.left:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  border: 1px solid red;
+  background-color: #FF6C5C;
+}
+
+	</style>
+
+
+
+</head>
+
+<body >
+ 
+<div class="head">
+<h1 class="heading"> WordCount </h1>
+
+</div>
+<div class="inp">
+	<!-- <label>total words you Want</label> -->
+	<div class="numdiv">
+	<input type="text" name="num" class="num" placeholder="Total Word Count You Want:">
+</div>
+</div>
+
+<div class="inp"><textarea  id="myTextarea" onkeyup="return wordcount()" onkeydown="return wordcount()" onkeypress="return wordcount()" onblur="return wordcount()" onfocus="return wordcount()"></textarea></div>
+<div>
+	<!-- <input type="textarea"> -->
+</div>
+<div class="count">
+<div class="cen">
+		<div class="typed">
+			<h1 class="txt">No. Of Words Typed</h1>
+			<p class="numb">0</p>
+		</div></div>
+	<div class="left">
+		<h1 class="txt2">No. Of Words Left</h1>
+			<p class="numb2">0</p>
+	</div>
+</div>
+<script type="text/javascript">
+	const typed=document.querySelector(".numb");
+	// const alltxt=document.('textbox').value;
+	 // var wc=0;
+	function wordcount()
+	{	
+		if(document.querySelector(".num").value !== ''||document.querySelector(".num").value !== ' '||document.querySelector(".num").value !== null)
+		{
+						let alltxt=document.getElementById("myTextarea").value;
+		const typed=document.querySelector(".numb");
+		const total=document.querySelector(".num").value;
+		const left=document.querySelector(".numb2");
+		const fullleft=document.querySelector(".left");
+		const fullright=document.querySelector(".typed");
+		const inp=document.querySelector(".inp");
+		const cent=document.querySelector(".cen");
+
+		
+		// console.log(alltxt);
+		var wc=0;
+		var arr=[];
+		arr=alltxt.split("");
+		console.log(arr);
+		// alert(arr.length);
+		for (var i = 0; i < arr.length; i++) {
+			if(arr[i] == ' '||arr[i] == "\n"||arr[i] == ".")
+			{
+				if(arr[i+1] == ' '||arr[i+1] == "\n"||arr[i+1] == ".")
+				{
+				continue;
+				}
+				
+
+
+				wc=wc+1;
+				
+
+				}
+			}
+			var l=total-wc;
+		
+		typed.textContent=wc;
+		left.textContent=l;
+		
+		
+		if(wc>=total)
+		{
+			fullleft.style.backgroundColor= "#FF6C5C";
+			// fullleft.style.Color="white";
+			// fullleft.style.borderColor="white"
+			left.textContent="Task Completed!!";
+		}
+		if(total==" "||total==""||total==0||total==null	)
+		{
+			// fullleft.style.backgroundColor= "#FF6C5C";
+			// fullleft.style.Color="white";
+			fullleft.style.visibility="hidden";
+			// fullright.style.float="r?ight";
+			// fullright.style.left="40%";
+			// fullleft.style.visibility="hidden";
+			inp.style.visibility="hidden";
+			// fullleft.textContent="** Total Not Given **";
+			cent.style.display="flex";
+			cent.style.flexDirection="column";
+			cent.style.alignItems="center";
+			cent.style.justifyContent ="center";
+
+		}
+	}
+}
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
